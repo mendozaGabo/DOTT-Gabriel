@@ -24,6 +24,7 @@ pipeline {
                 sh ' cd ./node/ '
                 sh ' pwd '
                 sh ' ls '
+                sh ' cd node/ '
                 withSonarQubeEnv('SonarCloud') {
 
                     sh '''${scannerHome}/bin/sonar-scanner \
