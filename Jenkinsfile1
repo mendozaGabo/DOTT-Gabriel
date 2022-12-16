@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SCANNER_HOME= tool 'sonarDOTT'
+		 SCANNER_HOME= tool 'SonarCloud'
     }
     stages {
         stage('Build') {
