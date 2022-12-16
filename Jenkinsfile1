@@ -16,8 +16,8 @@ pipeline {
 
     stage('build') {
       steps {
-        sh 'echo "Step One build something else" '
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mendozaGabo/DOTT-Gabriel.git']]])
+        sh 'echo "Im cooking something up" '
+        git branch: 'master', url: 'https://github.com/mendozaGabo/DOTT-Gabriel.git'
         }
       }
     }
