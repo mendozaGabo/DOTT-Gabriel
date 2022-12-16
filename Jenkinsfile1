@@ -23,11 +23,9 @@ SCANNER_HOME= tool 'sonarDOTT';
         git branch: 'master', url: 'https://github.com/mendozaGabo/DOTT-Gabriel.git'
         }
       }
-      stage('Sonar') {
+      stage('Static Code Analysis') {
             steps {
-                echo 'SonarCloud'
-                sh ' cd node '
-                 sh 'withSonarQubeEnv('SonarCloud') {
+                withSonarQubeEnv('SonarCloud') {
                     sh '''${scannerHome}/bin/sonar-scanner \
                         -Dsonar.organization=mendozaGabo \
                         -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
