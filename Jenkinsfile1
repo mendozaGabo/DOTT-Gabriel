@@ -8,7 +8,6 @@ pipeline {
   stages {
     stage('install') {
       steps {
-        git branch: 'master', url: 'https://github.com/mendozaGabo/DOTT-Gabriel.git'
         dir('node') {
           sh 'npm install'
         }
