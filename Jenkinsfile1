@@ -1,28 +1,26 @@
 pipeline {
-    environment {
-
-        scannerHome = tool 'sonarcloud';
-
+        nodejs "node"
     }
-    
-    agent any
 
     stages {
-        stages {
-        stage('Build') {
-            steps {
-                sh '''
-                echo "${SCANNER_HOME}"
-                '''
-                withSonarQubeEnv('sonarcloud') {
-                sh 'cd ./node'
-                sh '${SCANNER_HOME}/bin/sonar-scanner'
-                }
-                    }
-
-                        }
-
-                }
+        
+  stages {
+    stage('install') {
+      steps {
+        git branch: 'master', url: 'https://github.com/mendozaGabo/DOTT-Gabriel.git'
+        dir('node') {
+          sh 'npm install'
+        }
+      }
     }
-}
-                
+
+        
+    stage('test') {
+      steps {
+        dir('node') {
+          sh 'npm run test'
+        }
+      }
+    }
+    }
+}             
