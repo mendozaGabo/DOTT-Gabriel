@@ -27,9 +27,9 @@ pipeline {
 
                     sh '''${scannerHome}/bin/sonar-scanner \
 
-                        -Dsonar.organization=mendozaGabo \
+                        -Dsonar.organization=mendozagabo \
 
-                        -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
+                        -Dsonar.projectKey=mendozagabo_DOTT-Gabriel \
 
                         -Dsonar.sources=./node/ \
 
