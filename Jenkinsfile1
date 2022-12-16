@@ -23,9 +23,10 @@ pipeline {
                 echo 'SonarCloud'
                 sh 'cd ./node/'
                 withSonarQubeEnv('SonarCloud') {
-                    sh ' pwd '
-                    sh ' cd node '
-                    sh ' pwd '
+                    sh script:'''
+                                #!/bin/bash
+                                cd ./node/
+                                        '''
                     sh '''${scannerHome}/bin/sonar-scanner \
 
                         -Dsonar.organization=mendozagabo \
