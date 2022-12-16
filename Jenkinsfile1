@@ -8,45 +8,21 @@ pipeline {
     agent any
 
     stages {
+        stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Sonar') {
-            steps {
-                echo 'SonarCloud'
-                dir("node") {
-    sh "pwd"
+                sh '''
+                echo "${SCANNER_HOME}"
+                '''
+                withSonarQubeEnv('sonarcloud') {
+                sh 'cd ./node'
+                sh '${SCANNER_HOME}/bin/sonar-scanner'
+                }
+                    }
+
+                        }
+
+                }
+    }
 }
-                sh 'cd ./node/'
-                withSonarQubeEnv('SonarCloud') {
-                    sh script:'''
-                                #!/bin/bash
-                                cd ./node/
-                                        '''
-                    sh '''${scannerHome}/bin/sonar-scanner \
-
-                        -Dsonar.organization=mendozagabo \
-
-                        -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
-
-                        -Dsonar.sources=./node/ \
-
-                        -Dsonar.host.url=https://sonarcloud.io
-
-                    '''
-
-                }
-
-            }
-
-        }
-                 /*sh '''withSonarQubeEnv('SonarCloud') {
-                    sonar-scanner \
-                        -Dsonar.organization=mendozaGabo \
-                        -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=https://sonarcloud.io '''*/
-                }
-            }
+                
