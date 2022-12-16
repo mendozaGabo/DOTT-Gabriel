@@ -1,41 +1,40 @@
 pipeline {
+    environment {
+
+        SCANNER_HOME= tool 'sonarcloud'
+
+    }
+    
     agent any
 
-   tools {
-        nodejs "node"
-    }
-
-
-    environment {
-scannerHome = tool 'sonarcloud';
-    }
-
- 
-  stages {
-    stage('install') {
-      steps {
-        dir('node') {
-          sh 'npm install'
-        }
-      }
-    }
-
-    stage('build') {
-      steps {
-        sh 'echo "Im cooking something up" '
-        git branch: 'master', url: 'https://github.com/mendozaGabo/DOTT-Gabriel.git'
-        }
-      }
-      stage('Static Code Analysis') {
+    stages {
+        stage('Build') {
             steps {
-                 sh '''withSonarQubeEnv('sonarDOTT') {
+                echo 'Building..'
+            }
+        }
+        stage('Testingggg') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Sonar') {
+            steps {
+                echo 'SonarCloud'
+                sh ' cd node '
+                 sh '''withSonarQubeEnv('sonarcloud') {
                     sonar-scanner \
                         -Dsonar.organization=mendozaGabo \
-                        -Dsonar.projectKey= mendozaGabo_DOTT-Gabriel\
+                        -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=https://sonarcloud.io '''
-                    
                 }
+            }
+        
+        stage('Deployingggg') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
 }
