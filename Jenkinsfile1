@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'SonarCloud'
                 sh ' cd node '
-                 sh '''withSonarQubeEnv('sonarcloud') {
+                 sh '''withSonarQubeEnv('SonarCloud') {
                     sonar-scanner \
                         -Dsonar.organization=mendozaGabo \
                         -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
