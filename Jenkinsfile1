@@ -25,7 +25,6 @@ SCANNER_HOME= tool 'sonarDOTT';
       }
       stage('Static Code Analysis') {
             steps {
-                sh ' cd node '
                  sh '''withSonarQubeEnv('sonarDOTT') {
                     sonar-scanner \
                         -Dsonar.organization=mendozaGabo \
