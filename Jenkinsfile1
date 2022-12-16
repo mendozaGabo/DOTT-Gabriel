@@ -26,7 +26,7 @@ pipeline {
                 sh ' ls '
                 sh ' cd node/ '
                 withSonarQubeEnv('SonarCloud') {
-
+                    sh ' cd ./node/ '
                     sh '''${scannerHome}/bin/sonar-scanner \
 
                         -Dsonar.organization=mendozagabo \
