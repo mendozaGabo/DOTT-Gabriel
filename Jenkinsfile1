@@ -22,5 +22,13 @@ pipeline {
         }
       }
     }
+    stage('test') {
+      steps {
+        
+        dir('node') {
+          sh 'node --version'
+        }
+      }
+    }
     }
 }
