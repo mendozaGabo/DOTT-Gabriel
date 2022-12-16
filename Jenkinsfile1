@@ -13,14 +13,12 @@ pipeline {
                 echo 'Building..'
             }
         }
-        stage('Testingggg') {
-            steps {
-                echo 'Testing..'
-            }
-        }
         stage('Sonar') {
             steps {
                 echo 'SonarCloud'
+                dir("node") {
+    sh "pwd"
+}
                 sh 'cd ./node/'
                 withSonarQubeEnv('SonarCloud') {
                     sh script:'''
@@ -52,9 +50,3 @@ pipeline {
                         -Dsonar.host.url=https://sonarcloud.io '''*/
                 }
             }
-        
-        stage('Deployingggg') {
-            steps {
-
-    }
-}
