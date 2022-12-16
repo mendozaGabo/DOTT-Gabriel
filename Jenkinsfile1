@@ -21,7 +21,7 @@ pipeline {
         stage('Sonar') {
             steps {
                 echo 'SonarCloud'
-                sh 'cd ./cidr_convert_api/node/'
+                sh 'cd ./node/'
                 withSonarQubeEnv('SonarCloud') {
                     sh '''${scannerHome}/bin/sonar-scanner \
 
@@ -29,7 +29,7 @@ pipeline {
 
                         -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
 
-                        -Dsonar.sources=./cidr_convert_api/node/ \
+                        -Dsonar.sources=./node/ \
 
                         -Dsonar.host.url=https://sonarcloud.io
 
