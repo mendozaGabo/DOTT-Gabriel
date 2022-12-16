@@ -1,13 +1,16 @@
 pipeline {
     agent any
-    environment {
-SCANNER_HOME= tool 'sonarDOTT';
-    }
 
-    tools {
+   tools {
         nodejs "node"
     }
 
+
+    environment {
+scannerHome = tool 'sonarcloud';
+    }
+
+ 
   stages {
     stage('install') {
       steps {
