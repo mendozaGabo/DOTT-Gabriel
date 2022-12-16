@@ -1,19 +1,21 @@
 pipeline {
     agent any
-    environment {
-		 SCANNER_HOME= tool 'SonarCloud'
+    
+    tools {
+        nodejs "node"
     }
+
     stages {
-        stage('Build') {
+        stage('install') {
+            sh 'npm install'
+        }
+
+        stage('test'){
             steps {
-                sh '''
-                echo "${SCANNER_HOME}"
-                '''
-                withSonarQubeEnv('sonarDOTT') {
-                sh 'cd ./node'
-                sh '${SCANNER_HOME}/bin/sonar-scanner'
+                dir('node') {
+                    sh 'npm run test'
                 }
             }
-        }
-     }
-  }
+        } 
+    }
+}
