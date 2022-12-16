@@ -25,12 +25,13 @@ SCANNER_HOME= tool 'sonarDOTT';
       }
       stage('Static Code Analysis') {
             steps {
-                withSonarQubeEnv('SonarCloud') {
-                    sh '''${scannerHome}/bin/sonar-scanner \
+                sh ' cd node '
+                 sh '''withSonarQubeEnv('sonarDOTT') {
+                    sonar-scanner \
                         -Dsonar.organization=mendozaGabo \
-                        -Dsonar.projectKey=mendozaGabo_DOTT-Gabriel \
-                        -Dsonar.sources=./node/ \
-                        -Dsonar.host.url=https://sonarcloud.io
+                        -Dsonar.projectKey= mendozaGabo_DOTT-Gabriel\
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=https://sonarcloud.io '''
                     
                 }
         }
