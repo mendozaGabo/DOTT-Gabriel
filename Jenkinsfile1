@@ -21,7 +21,7 @@ pipeline {
         stage('Sonar') {
             steps {
                 echo 'SonarCloud'
-                sh ' cd node '
+                sh ' cd ./node/ '
                 sh ' pwd '
                 sh ' ls '
                 withSonarQubeEnv('SonarCloud') {
